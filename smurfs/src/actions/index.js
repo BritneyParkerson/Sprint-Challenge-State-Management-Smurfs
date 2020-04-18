@@ -21,14 +21,18 @@ export const fetchSmurfs = () =>  (dispatch) => {
 
 export const addSmurf = (smurf) => (dispatch) => {
     dispatch({ type: ADD_SMURF })
-    axios.post('http://localhost:3333', smurf)
+    axios
+    .post('http://localhost:3333/smurfs', smurf)
     .then((res) => {
         dispatch({
-            type: ADD_SMURF, payload: res.data
+            type: SMURF_ADDED, 
+            payload: res.data
         });
     })
     .catch((error) => {
-        dispatch({type: SMURF_FAILED, payload: error.response})
+        dispatch({
+            type: SMURF_FAILED, 
+            payload: error.response})
     })
 }
 
