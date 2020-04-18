@@ -27,9 +27,9 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [X] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
     <br>  [X] Answer: 
-          - Actions are considered plain JavaScript objects with mandatory properties. Triggers the reducers and describes the fact that something as happened without specifying how the state changed in response to the action.
-          - Reducers are considered pure functions and you can do async on them. The specify how the state changes in response to the actions.
-          - Store is where the state is contained. It is immutable and lets you write the reducers for your application. Instead of posting to the store directly, we copy the state and it’s changes.  This is what makes it the “single source of truth.
+       <br>  - Actions are considered plain JavaScript objects with mandatory properties. Triggers the reducers and describes the fact that something as happened without specifying how the state changed in response to the action.
+       <br>  - Reducers are considered pure functions and you can do async on them. The specify how the state changes in response to the actions.
+       <br>   - Store is where the state is contained. It is immutable and lets you write the reducers for your application. Instead of posting to the store directly, we copy the state and it’s changes.  This is what makes it the “single source of truth.
 
 
 - [X] What is the difference between Application state and Component state? When would be a good time to use one over the other?
