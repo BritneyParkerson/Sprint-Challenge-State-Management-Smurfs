@@ -1,16 +1,66 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
-class App extends Component {
-  render() {
+import SmurfsList from './SmurfsList';
+import { addSmurf } from '../actions';
+import { connect } from 'react-redux';
+
+function App(props) {
+  const [fields, setFields] = useState ({
+    name: '',
+    age: '',
+    height: ''
+  })
+  const handleChange = (event) => {
+    setFields ({
+      ...fields,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    props.addSmurf(fields);
+    setFields ({
+      name: '',
+      age: '',
+      height: ''
+    })
+  } 
+
+
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h1>SMURFS HAVE ARRIVED!</h1>
+        <div>Meet our wonderful blue friends!</div>
+        <form>
+        <label> Add Smurfs!:
+        <input
+          name="name"
+          onChange={handleChange}
+          type='text'
+          value={fields.name}
+          placeholder='Name'
+          />
+          <input
+          name="age"
+          onChange={handleChange}
+          type='text'
+          value={fields.age}
+          placeholder='Age'
+          />
+          <input
+          name="height"
+          onChange={handleChange}
+          type='text'
+          value={fields.height}
+          placeholder='Height'
+          />
+        </label>
+        <button type='submit' onClick={handleSubmit}>Add</button>
+        </form>
+        <SmurfsList/>
       </div>
     );
   }
-}
 
-export default App;
+export default connect(null, {addSmurf})(App); 
